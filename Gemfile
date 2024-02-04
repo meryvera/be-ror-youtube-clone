@@ -47,4 +47,4 @@ end
 
 # Use devise for authentication
 gem 'devise'
-
+gem 'jwt'
