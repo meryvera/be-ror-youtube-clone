@@ -10,6 +10,6 @@ class CreateLikeDislikes < ActiveRecord::Migration[7.1]
 
     # Agregar índices
     add_index :like_dislikes, [:like_dislike_model_type, :like_dislike_model_id]
-    add_index :like_dislikes, :user_id
+    # add_index :like_dislikes, :user_id
   end
 end
