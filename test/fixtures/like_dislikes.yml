@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  like: false
+  user: one
+  like_dislike_model: one
+  like_dislike_model_type: Like dislike model
+
+two:
+  like: false
+  user: two
+  like_dislike_model: two
+  like_dislike_model_type: Like dislike model
