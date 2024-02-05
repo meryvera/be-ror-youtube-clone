@@ -2,6 +2,7 @@ module Api
   module V1
     # Purpose: LikeDislike controller for API v1
     class LikeDislikesController < BaseController
+      before_action :authenticate_user!
       before_action :set_like_dislike, only: [:destroy]
 
       # GET /api/v1/like_dislikes

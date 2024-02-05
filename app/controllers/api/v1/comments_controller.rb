@@ -4,6 +4,7 @@ module Api
   module V1
     # Purpose: Comment controller for API v1
     class CommentsController < BaseController
+      before_action :authenticate_user!
       before_action :set_comment, only: %i[show update destroy]
 
       # GET /api/v1/comments

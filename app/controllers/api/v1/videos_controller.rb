@@ -4,6 +4,7 @@ module Api
   module V1
     # Purpose: Video controller for API v1
     class VideosController < BaseController
+      before_action :authenticate_user!
       before_action :set_video, only: %i[show update destroy]
 
       # GET /api/v1/videos
