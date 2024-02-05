@@ -4,6 +4,7 @@ module Api
   module V1
     # Purpose: User controller for API v1
     class UsersController < BaseController
+      # before_action :authenticate_user!
       # GET /api/v1/users
       def index
         @users = User.all
@@ -46,7 +47,7 @@ module Api
       private
 
       def user_params
-        params.require(:user).permit(:name, :email, :password, :nickname, :profile_info)
+        params.require(:user).permit(:first_name, :last_name, :email, :password, :profile_info, :avatar)
       end
     end
   end
