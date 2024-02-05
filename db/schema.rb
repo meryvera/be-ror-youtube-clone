@@ -10,9 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_04_221744) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_05_000713) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "user_id", null: false
+    t.bigint "video_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["video_id"], name: "index_comments_on_video_id"
+  end
+
+  create_table "like_dislikes", force: :cascade do |t|
+    t.boolean "like"
+    t.bigint "user_id", null: false
+    t.string "like_dislike_model_type", null: false
+    t.bigint "like_dislike_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["like_dislike_model_type", "like_dislike_model_id"], name: "idx_on_like_dislike_model_type_like_dislike_model_i_977d18abc4"
+    t.index ["like_dislike_model_type", "like_dislike_model_id"], name: "index_like_dislikes_on_like_dislike_model"
+    t.index ["user_id"], name: "index_like_dislikes_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,4 +52,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_221744) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "url_video"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_videos_on_user_id"
+  end
+
+  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "videos"
+  add_foreign_key "like_dislikes", "users"
+  add_foreign_key "videos", "users"
 end
