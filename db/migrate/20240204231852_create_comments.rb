@@ -8,7 +8,7 @@ class CreateComments < ActiveRecord::Migration[7.1]
       t.timestamps
     end
     # Agregar índices
-    add_index :comments, :user_id
-    add_index :comments, :video_id
+    # add_index :comments, :user_id
+    # add_index :comments, :video_id
   end
 end
