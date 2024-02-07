@@ -4,7 +4,8 @@ module Api
   module V1
     # Purpose: Video controller for API v1
     class VideosController < BaseController
-      before_action :authenticate_user!
+      # before_action :authenticate_user!
+      include JwtAuthenticatable
       before_action :set_video, only: %i[show update destroy]
 
       # GET /api/v1/videos
@@ -50,7 +51,7 @@ module Api
       end
 
       def video_params
-        params.require(:video).permit(:title, :url, :user_id)
+        params.require(:video).permit(:title, :description, :url_video,:user_id)
       end
     end
   end

@@ -4,7 +4,8 @@ module Api
   module V1
     # Purpose: Comment controller for API v1
     class CommentsController < BaseController
-      before_action :authenticate_user!
+      # before_action :authenticate_user!
+      include JwtAuthenticatable
       before_action :set_comment, only: %i[show update destroy]
 
       # GET /api/v1/comments
@@ -50,7 +51,7 @@ module Api
       end
 
       def comment_params
-        params.require(:comment).permit(:text, :user_id, :video_id)
+        params.require(:comment).permit(:content, :user_id, :video_id)
       end
     end
   end

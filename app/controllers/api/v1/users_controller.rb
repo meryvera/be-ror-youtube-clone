@@ -4,7 +4,7 @@ module Api
   module V1
     # Purpose: User controller for API v1
     class UsersController < BaseController
-      before_action :authenticate_user!, except: [:create]
+      # before_action :authenticate_user!, except: [:create]
       # GET /api/v1/users
       def index
         @users = User.all
